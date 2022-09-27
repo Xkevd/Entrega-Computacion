@@ -1,4 +1,3 @@
-
 casos_de_prueba
 Casos=length(mat_casos(:,1))
 LargoCoincidencia=length(mat_casos(1,:))
@@ -16,8 +15,12 @@ endfor
 [fila,columna]=size(mat_salida)
 fallos=[]
 for i=1:fila
-  if mat_salida(i,:)!=mat_salida_ref(i,:)
-      fallos=[fallos;i]
-  endif
+  for j=1:columna
+    if mat_salida(i,j)!=mat_salida_ref(i,j)
+      if j==columna
+        fallos=[fallos;i]
+      endif
+    endif
+  endfor
 endfor
 
